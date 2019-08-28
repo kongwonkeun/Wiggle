@@ -12,7 +12,7 @@ export default class WiggleClientEngine extends ClientEngine {
                 document.body.classList.add('lostGame');
                 document.querySelector('#tryAgain').disabled = false;
                 //---- kong ----
-                window.location.reload();
+                //window.location.reload();
                 //----
             }
         });

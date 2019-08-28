@@ -46,7 +46,7 @@ $(document).ready(function () {
       }
 
       window.W_speed = parseInt(val[0]);
-      window.W_dir = parseInt(val[1]);
+      window.W_dir = 19 - parseInt(val[1]);
       log.innerHTML += "speed: " + window.W_speed + "<br/>";
       log.innerHTML += "dir: " + window.W_dir + "<br/>";
       log.innerHTML += "fr: " + window.W_fr + "<br/>";

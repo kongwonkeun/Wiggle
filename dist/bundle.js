@@ -13607,7 +13607,7 @@ $(document).ready(function () {
       }
 
       window.W_speed = parseInt(val[0]);
-      window.W_dir = parseInt(val[1]);
+      window.W_dir = 19 - parseInt(val[1]);
       log.innerHTML += "speed: " + window.W_speed + "<br/>";
       log.innerHTML += "dir: " + window.W_dir + "<br/>";
       log.innerHTML += "fr: " + window.W_fr + "<br/>";
@@ -16723,9 +16723,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- //---- kong ----
 
-var G_last_angle = 0; //----
 
 var WiggleClientEngine =
 /*#__PURE__*/
@@ -16742,7 +16740,9 @@ function (_ClientEngine) {
     gameEngine.on('objectDestroyed', function (obj) {
       if (obj.playerId === gameEngine.playerId) {
         document.body.classList.add('lostGame');
-        document.querySelector('#tryAgain').disabled = false;
+        document.querySelector('#tryAgain').disabled = false; //---- kong ----
+        //window.location.reload();
+        //----
       }
     }); // restart game
 
@@ -16789,19 +16789,35 @@ function (_ClientEngine) {
       //----
       //---- kong ----
 
-      window.W_fr += 1;
-
       if (player === null) {
+        return;
+      } //window.W_fr += 1;
+
+
+      var y = window.W_speed;
+      var x = window.W_dir;
+
+      if (y < 70) {
+        this.sendInput(this.gameEngine.directionStop, {
+          movement: true
+        });
         return;
       }
 
-      var y = window.W_speed;
-      var x = window.W_dir * 50;
+      y = y / 70;
       var a = Math.atan2(y, x);
-      var d = a - 1.57; // 1.57 is the radian value of 90 degrees
 
-      var angle = G_last_angle + d;
-      G_last_angle = angle;
+      if (isNaN(a)) {
+        this.sendInput(this.gameEngine.directionStop, {
+          movement: true
+        });
+        return; // why a is NaN ???
+      }
+
+      var d = a * 2;
+      var angle = 1.57 - d; // 1.57 is the radian value of 90 degrees
+
+      window.W_fr = angle;
       this.sendInput(angle, {
         movement: true
       }); //----
