@@ -9,8 +9,8 @@ export default class WiggleClientEngine extends ClientEngine {
         // show try-again button
         gameEngine.on('objectDestroyed', (obj) => {
             if (obj.playerId === gameEngine.playerId) {
-                document.body.classList.add('lostGame');
-                document.querySelector('#tryAgain').disabled = false;
+                //document.body.classList.add('lostGame');
+                //document.querySelector('#tryAgain').disabled = false;
                 //---- kong ----
                 //window.location.reload();
                 //----
