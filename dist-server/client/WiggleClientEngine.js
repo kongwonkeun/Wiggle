@@ -42,9 +42,9 @@ function (_ClientEngine) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(WiggleClientEngine).call(this, gameEngine, options, _WiggleRenderer.default)); // show try-again button
 
     gameEngine.on('objectDestroyed', function (obj) {
-      if (obj.playerId === gameEngine.playerId) {
-        document.body.classList.add('lostGame');
-        document.querySelector('#tryAgain').disabled = false; //---- kong ----
+      if (obj.playerId === gameEngine.playerId) {//document.body.classList.add('lostGame');
+        //document.querySelector('#tryAgain').disabled = false;
+        //---- kong ----
         //window.location.reload();
         //----
       }

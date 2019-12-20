@@ -13607,7 +13607,7 @@ $(document).ready(function () {
       }
 
       window.W_speed = parseInt(val[0]);
-      window.W_dir = 19 - parseInt(val[1]);
+      window.W_dir = parseInt(val[1]) - 15;
       log.innerHTML += "speed: " + window.W_speed + "<br/>";
       log.innerHTML += "dir: " + window.W_dir + "<br/>";
       log.innerHTML += "fr: " + window.W_fr + "<br/>";
@@ -16738,9 +16738,9 @@ function (_ClientEngine) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(WiggleClientEngine).call(this, gameEngine, options, __WEBPACK_IMPORTED_MODULE_1__client_WiggleRenderer__["a" /* default */])); // show try-again button
 
     gameEngine.on('objectDestroyed', function (obj) {
-      if (obj.playerId === gameEngine.playerId) {
-        document.body.classList.add('lostGame');
-        document.querySelector('#tryAgain').disabled = false; //---- kong ----
+      if (obj.playerId === gameEngine.playerId) {//document.body.classList.add('lostGame');
+        //document.querySelector('#tryAgain').disabled = false;
+        //---- kong ----
         //window.location.reload();
         //----
       }
@@ -16957,8 +16957,7 @@ function (_Renderer) {
       this.drawCircle(eye2.x, eye2.y, game.eyeRadius, true);
       ctx.fillStyle = 'white'; // update status
 
-      if (isPlayer) {
-        document.getElementById('wiggle-length').innerHTML = 'Wiggle Length: ' + w.bodyParts.length;
+      if (isPlayer) {//document.getElementById('wiggle-length').innerHTML = 'Wiggle Length: ' + w.bodyParts.length;
       }
     }
   }, {
